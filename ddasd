@@ -1,0 +1,77 @@
+[33mcommit a5aaa6482485e08f190f94dc61b6f217d5fe911f[m
+Author: andruzko <andruzko@gmai.com>
+Date:   Tue Nov 10 21:56:05 2015 +0200
+
+    add json output
+
+[33mcommit 1bb9059b6bf16ae5b6deda5035fac650c92adc80[m
+Author: andruzko <andruzko@gmai.com>
+Date:   Tue Nov 10 03:25:37 2015 +0200
+
+    install bootstrap
+
+[33mcommit 69b12491ca1c958a985483b66f7554678483db80[m
+Author: andruzko <andruzko@gmai.com>
+Date:   Mon Nov 9 14:46:09 2015 +0200
+
+    add searching
+
+[33mcommit e69c2e909bce9a84e4ee958ca4286a9fd6459790[m
+Author: andruzko <andruzko@gmai.com>
+Date:   Fri Nov 6 13:57:27 2015 +0200
+
+    correct the header
+
+[33mcommit 80550ccbcf714219d6a26e612a472921fb3a996d[m
+Author: andruzko <andruzko@gmai.com>
+Date:   Fri Nov 6 13:34:05 2015 +0200
+
+    bag fix in route
+
+[33mcommit 98560b88680c5e3a20c0bd8765a733801f62f8aa[m
+Author: andruzko <andruzko@gmai.com>
+Date:   Thu Nov 5 19:58:56 2015 +0200
+
+    Add precompiled assets for Heroku
+
+[33mcommit b2c70e191f8c1bf11ab94357ca8541e25343afaa[m
+Author: andruzko <andruzko@gmai.com>
+Date:   Thu Nov 5 19:50:11 2015 +0200
+
+    install gem pg
+
+[33mcommit 5bf174e89adba34e011df2ceb34119e3d0838de6[m
+Author: andruzko <andruzko@gmai.com>
+Date:   Thu Nov 5 19:28:06 2015 +0200
+
+    add gem pg to gemfile
+
+[33mcommit 9c83160f6bf99a62eae61c523e747d25152acaec[m
+Author: andruzko <andruzko@gmai.com>
+Date:   Thu Nov 5 19:10:31 2015 +0200
+
+     fix bugs
+
+[33mcommit e1d33ec6518e66aa3cacd9d8eaebf62bca0d11d5[m
+Author: andruzko <andruzko@gmai.com>
+Date:   Wed Nov 4 18:09:11 2015 +0200
+
+    add session
+
+[33mcommit 0c770d229dc994c6d2bcd08c89fbf84a04705c80[m
+Author: andruzko <andruzko@gmai.com>
+Date:   Wed Nov 4 16:20:35 2015 +0200
+
+    add conrtrollers sessions and users
+
+[33mcommit b53b2f12ec788a001fcfb4ab8206f8730b94a68a[m
+Author: andruzko <andruzko@gmai.com>
+Date:   Wed Nov 4 15:06:59 2015 +0200
+
+    add model post, user
+
+[33mcommit b50b4ea8d371cb027a143158b7a6a1c9cdad8b5a[m
+Author: andruzko <andruzko@gmai.com>
+Date:   Wed Nov 4 13:07:17 2015 +0200
+
+    initial

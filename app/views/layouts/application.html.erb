@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blog</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <%= render 'shared/navigation' %>
+  <div id="main-container" class="container">
+    <% if current_user %>
+      <% if (session[:counter] += 1) % 10 == 0 %>
+        <script>
+          alert('learn with GeekHub');
+        </script>
+      <% end%>
+    <% end %>
+    <%= yield %>
+  </div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h1>Log in</h1>
+    <%= form_tag('/sessions', method: :post) do %>
+      <div class="field form-group">
+        <%= text_field_tag :email, nil, class: 'form-control', placeholder: "email" %>
+      </div class="field form-group">
+      <div>
+        <%= password_field_tag :password, nil, class: 'form-control', placeholder: "password"%>
+      </div>
+      <div class="field form-group">
+        <%= submit_tag 'Log in', class: "btn btn-primary"%>
+      </div>
+    <% end %>
+    <p>New user? <%= link_to "Sign up now!", registration_path %></p>
+  </div>
+</div>
