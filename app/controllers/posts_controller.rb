@@ -92,6 +92,12 @@ class PostsController < ApplicationController
     end
   end
 
+  def rate
+    post = Post.find(params[:id])
+    post.update_attribute(:rate, post.rate + params[:value].to_i)
+    render json: {data: post.rate}
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post

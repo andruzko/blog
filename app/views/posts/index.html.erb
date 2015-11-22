@@ -1,3 +1,8 @@
+<script type="text/javascript">
+  $(function(){
+    Post.init();
+  });
+</script>
 <div class="container">
   <div class="content">
     <div class="main">
@@ -17,6 +22,7 @@
     <tr>
       <th>Title</th>
       <th>Body</th>
+      <th>Rate</th>
       <th>Avatar</th>
       <th>User</th>
       <th colspan="3">Actions</th>
@@ -25,9 +31,12 @@
 
   <tbody>
     <% @posts.each do |post| %>
-      <tr>
+      <tr post_id='<%= post.id %>'>
         <td><%= post.title %></td>
         <td><%= post.body %></td>
+        <td><%= link_to image_tag('plus.png', width:20), '#', class: 'add_rate' %>
+        <h2 class='rate'><%= post.rate %></h2>
+        <%= link_to image_tag('minus.png', width:20), '#', class: 'unrate' %></td>
         <td><%= image_tag(avatar_url(post.user), width:48) %></td>
         <td><%= post.user.name %></td>
         <td><%= link_to 'Show', post, class: "btn btn-info" %></td>

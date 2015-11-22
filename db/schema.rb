@@ -34,8 +34,15 @@ ActiveRecord::Schema.define(version: 20151118190903) do
   add_index "post_tags", ["post_id"], name: "index_post_tags_on_post_id"
   add_index "post_tags", ["tag_id"], name: "index_post_tags_on_tag_id"
 
-# Could not dump table "posts" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "posts", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "user_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "rate",       default: 0
+    t.string   "rater"
+  end
 
   create_table "tags", force: :cascade do |t|
     t.string   "name"
