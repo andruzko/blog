@@ -94,8 +94,11 @@ class PostsController < ApplicationController
 
   def rate
     post = Post.find(params[:id])
-    post.update_attribute(:rate, post.rate + params[:value].to_i)
-    render json: {data: post.rate}
+    if (post.user.id != current_user.id) and not(post.rater.include?(current_user.id))
+      post.update_attribute(:rater, post.rater.push(current_user.id))
+      post.update_attribute(:rate, post.rate + params[:value].to_i)
+      render json: {data: post.rate}
+    end
   end
 
   private
