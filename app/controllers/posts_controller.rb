@@ -4,10 +4,10 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    if params[:search]
-      @posts = Post.search(params[:search])
-    elsif params[:tag]
+    if params[:tag]
       @posts = Post.tagged_with(params[:tag])
+    elsif params[:search]
+      @posts = Post.search(params[:search])
     else
       @posts = Post.all.newest
     end
@@ -115,6 +115,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :body).merge(user_id: current_user.id)
+      params.require(:post).permit(:title, :body, :tag_list).merge(user_id: current_user.id)
     end
 end

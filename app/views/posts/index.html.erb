@@ -36,7 +36,7 @@
       <tr post_id='<%= post.id %>'>
         <td><%= post.title %></td>
         <td><%= post.body %></td>
-        <td><%=  %></td>
+        <td><%=  raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')%></td>
         <td><%= link_to image_tag('plus.png', width:20), '#', class: 'add_rate' %>
         <h2 class='rate'><%= post.rate %></h2>
         <%= link_to image_tag('minus.png', width:20), '#', class: 'unrate' %></td>
