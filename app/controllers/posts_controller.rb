@@ -26,6 +26,10 @@ class PostsController < ApplicationController
     @posts = @user.posts
   end
 
+  def most_popular
+    @posts = Post.order('rate DESC').limit(5)
+  end
+
   # GET /posts/new
   def new
     @post = Post.new
@@ -92,7 +96,7 @@ class PostsController < ApplicationController
     end
   end
 
-  def rate
+  def rates
     post = Post.find(params[:id])
     if current_user and (post.user.id != current_user.id) and not(post.rater.include?(current_user.id))
       post.update_attribute(:rater, post.rater.push(current_user.id))

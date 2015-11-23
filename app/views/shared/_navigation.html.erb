@@ -4,6 +4,9 @@
           <ul class="nav navbar-nav navbar-left">
             <li><%= link_to "Posts list", root_path, class:"btn btn-lg btn-primary" %></li>
           </ul>
+          <ul class="nav navbar-nav navbar-left">
+            <li><%= link_to "most popular", most_popular_path, class:"btn btn-default" %></li>
+          </ul>
           <ul class="nav navbar-nav navbar-right">
             <% if current_user %>
               <li><%= link_to 'Log out', sessions_logout_path %></li>

@@ -7,7 +7,7 @@ var Post = {
     $('.add_rate').on('click', function(){
       var tthis = $(this);
       $.ajax({
-        url: "post/rate",
+        url: "post/rates",
         method: 'POST', 
         data: {id: tthis.parents('tr').attr('post_id'), value: 1},
       }).done(function(result) {
@@ -20,7 +20,7 @@ var Post = {
     $('.unrate').on('click', function(){
       var tthis = $(this);
       $.ajax({
-        url: "post/rate",
+        url: "post/rates",
         method: 'POST', 
         data: {id: tthis.parents('tr').attr('post_id'), value: -1},
       }).done(function(result) {

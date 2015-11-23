@@ -6,11 +6,13 @@ Rails.application.routes.draw do
   
   get 'userallposts' => 'posts#userallposts', as: 'userallposts'
 
+  get 'most_popular' => 'posts#most_popular', as: 'most_popular'
+
   post 'sessions' => 'sessions#create'
 
   get 'registration' => 'users#new', as: 'registration'
   post 'users' => 'users#create'
-  post 'post/rate' => 'posts#rate'
+  post 'post/rates' => 'posts#rates'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
