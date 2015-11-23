@@ -10,7 +10,6 @@
     <tr>
       <th>Title</th>
       <th>Body</th>
-      <th>Rate</th>
       <th>Avatar</th>
       <th>User</th>
       <th colspan="2">Actions</th>
@@ -21,9 +20,6 @@
       <tr>
         <td><%= @post.title %></td>
         <td><%= @post.body %></td>
-        <td><%= image_tag('plus.png', width:20) %>
-        <h2><%= @post.rate %></h2>
-        <%= image_tag('minus.png', width:20)%></td>
         <td><%= image_tag(avatar_url(@post.user), width:48) %></td>
         <td><%= @post.user.name %></td>
         <td><%= link_to 'Back', posts_path, class: "btn btn-info" %></td>
