@@ -4,6 +4,7 @@
       <td rowspan="2"><p><%= @post.user.name %></p>
         <p><%= image_tag(avatar_url(@post.user), width:48) %></p></td>
       <td><p><h4><ins><%= @post.title %></ins></h4></p>
+        <%= image_tag(@post.image_url) %>
         <p><%= @post.body %></p>
       </td>
     <tr>

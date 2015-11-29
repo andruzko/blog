@@ -89,11 +89,12 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
+    alert = ""
     if current_user && current_user.id == @post.user_id
       @post.destroy
     else
-      flash[:error] = 'Ви має право видаляти лише свої пости'
-      redirect_to posts_path
+      alert = "Ви має право видаляти лише свої пости"
+      render json: {data: alert}
     end
   end
 
