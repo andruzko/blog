@@ -7,9 +7,11 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       session[:counter] = 0
+      flash[:success] = "Thank you for signing up!"
       redirect_to root_path
     else 
-      redirect_to :back   #-----?????????????????/
+      flash[:alert] = "Something is wrong!"
+      redirect_to :back
     end
   end
 end
