@@ -91,11 +91,6 @@ class PostsController < ApplicationController
   def destroy
     if current_user && current_user.id == @post.user_id
       @post.destroy
-      respond_to do |format|
-        flash[:success] = 'Post was successfully destroyed.'
-        format.html { redirect_to posts_url }
-        format.json { head :no_content }
-      end
     else
       flash[:error] = 'Ви має право видаляти лише свої пости'
       redirect_to posts_path
@@ -119,6 +114,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :body, :tag_list).merge(user_id: current_user.id)
+      params.require(:post).permit(:title, :body, :tag_list, :image_url).merge(user_id: current_user.id)
     end
 end

@@ -3,7 +3,7 @@
     <tr post_id='<%= @post.id %>'>
       <td rowspan="2"><p><%= @post.user.name %></p>
         <p><%= image_tag(avatar_url(@post.user), width:48) %></p></td>
-      <td><p><h4><ins><%= link_to @post.title, @post %></ins></h4></p>
+      <td><p><h4><ins><%= @post.title %></ins></h4></p>
         <p><%= @post.body %></p>
       </td>
     <tr>

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       flash[:success] = "Thank you for signing up!"
       redirect_to root_path
     else 
-      flash[:alert] = "Something is wrong!"
+      flash[:alert] = "Something is wrong, try again!"
       redirect_to :back
     end
   end

@@ -1,0 +1,3 @@
+$('.post_<%= @post.id %>').fadeOut( "slow", function() {
+  $('.post_<%= @post.id %>').remove();
+});
