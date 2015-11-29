@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       session[:counter] = 0
       redirect_to root_path
     else 
-      redirect_to :back
+      redirect_to :back   #-----?????????????????/
     end
   end
 end

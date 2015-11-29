@@ -32,6 +32,10 @@ class PostsController < ApplicationController
     @posts = Post.order('rate DESC').limit(5)
   end
 
+  def active_posts
+    @posts = Post.order(:updated_at).last(3).reverse
+  end
+
   # GET /posts/new
   def new
     @post = Post.new

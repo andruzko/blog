@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
   get 'sessions/login'
 
   get 'sessions/logout'
@@ -7,6 +9,7 @@ Rails.application.routes.draw do
   get 'userallposts' => 'posts#userallposts', as: 'userallposts'
 
   get 'most_popular' => 'posts#most_popular', as: 'most_popular'
+  get 'active_posts' => 'posts#active_posts', as: 'active_posts'
 
   post 'sessions' => 'sessions#create'
 
