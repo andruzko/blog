@@ -1,6 +1,11 @@
+<% flash.each do |key, value| %>
+        <div class="<%= flash_class(key) %>">
+              <%= value %>
+        </div>
+  <% end %>
 <table class="table table-striped">
   <tbody>
-    <tr post_id='<%= @post.id %>'>
+    <tr>
       <td rowspan="2"><p><%= @post.user.name %></p>
         <p><%= image_tag(avatar_url(@post.user), width:48) %></p></td>
       <td><p><h4><ins><%= @post.title %></ins></h4></p>
@@ -11,8 +16,12 @@
       <td>
         <div class="row">
           <div class="col-md-4">tags: <%= raw @post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')%>
-          </div>
-          <div class="col-md-4 col-md-offset-4"><%= link_to 'Back', posts_path, class: "btn btn-info" %>
+                <h4>
+                  <%= link_to image_tag('like.png', width:25), like_path(@post)%>
+                  <span class='rate'><%= @post.rate %></span>
+                  <%= link_to image_tag('unlike.png', width:25), unlike_path(post_id: @post.id)%>
+          <div class="col-md-4 col-md-offset-4">
+            <%= link_to 'Back', posts_path, class: "btn btn-info" %>
             <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-info" %>
           </div>
         </div>
@@ -41,7 +50,7 @@
     </div>
   <% end %>
   <% else %>
-    <h3>Comments are apcent</h3>
+    <h3>Comments are absent</h3>
   <% end %>
  <% if current_user %>
       <%= form_for([@post, @post.comments.build]) do |f| %>

@@ -1,0 +1,14 @@
+<h1>List Users</h1>
+
+<% @users.each do |user| %>
+  <p>
+    <%= user.rating %>
+    <%= link_to user_path(user), target: '_blank', class: 'avatar-index' do %>
+      <%= image_tag avatar_url(user, 32), width: '32px' %>
+      <%= user.name %>
+  <% end %>
+  </p>
+  <p>
+    <%= @rating %>
+  </p>
+<% end %>

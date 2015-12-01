@@ -1,7 +1,18 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show]
+
+  def index
+    @users = User.all.sort_by(&:rate).reverse
+  end
+
+  def show
+    @user_posts = Post.where(user: @user)
+  end
+
   def new
     @user = User.new
   end
+
   def create
     @user = User.new(params.require(:user).permit(:name, :email, :password, :avatar_url))
     if @user.save
@@ -14,4 +25,11 @@ class UsersController < ApplicationController
       redirect_to :back
     end
   end
+
+  private
+
+    def set_user
+      @user = User.find(params[:id])
+    end
+
 end

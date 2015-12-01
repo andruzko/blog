@@ -16,4 +16,8 @@ class Post < ActiveRecord::Base
   def self.search(query)
    where("title like ? or body like ?", "%#{query}%", "%#{query}%")
   end
+
+  def rate_in
+    self.increment
+  end
 end

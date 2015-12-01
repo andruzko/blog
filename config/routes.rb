@@ -15,7 +15,10 @@ Rails.application.routes.draw do
 
   get 'registration' => 'users#new', as: 'registration'
   post 'users' => 'users#create'
-  post 'post/rates' => 'posts#rates'
+  #post 'post/rates' => 'posts#rates'
+
+  get 'like' => 'posts#like', as: :like
+  post 'unlike' => 'posts#unlike', as: :unlike
 
   get 'tags/:tag', to: 'posts#index', as: :tag
 

@@ -92,20 +92,42 @@ class PostsController < ApplicationController
     alert = ""
     if current_user && current_user.id == @post.user_id
       @post.destroy
-    else
-      alert = "Ви має право видаляти лише свої пости"
-      render json: {data: alert}
+    #else
+    #  alert = "Ви має право видаляти лише свої пости"
+     # render json: {data: alert}
     end
   end
 
-  def rates
-    post = Post.find(params[:id])
-    if current_user and (post.user.id != current_user.id) and not(post.rater.include?(current_user.id))
-      post.update_attribute(:rater, post.rater.push(current_user.id))
-      post.update_attribute(:rate, post.rate + params[:value].to_i)
-      render json: {data: post.rate}
+  def like
+    if current_user && (@post.user.id != current_user.id) && not(@post.rater.include?(current_user.id))
+      @post.update_attribute(:rater, @post.rater.push(current_user.id))
+      @post.update_attribute(:rate, @post.rate + 1)
+    else
+      flash[:error] = 'you have to login or you can not rate own posts or can rate one time'
     end
+    redirect_to :back
   end
+
+  def unlike
+    post = Post.find(params[:post_id])
+    if current_user && (@post.user.id != current_user.id) && not(@post.rater.include?(current_user.id))
+      @post.update_attribute(:rater, @post.rater.push(current_user.id))
+      @post.update_attribute(:rate, @post.rate - 1)
+    else
+      flash[:error] = 'you have to login or you can not rate own posts or can rate one time'
+    end
+    redirect_to :back
+  end
+
+ # def rates
+  #  post = Post.find(params[:post_id])
+  #  if current_user && (post.user.id != current_user.id) && not(post.rater.include?(current_user.id))
+  #    post.update_attribute(:rater, post.rater.push(current_user.id))
+  #    post.update_attribute(:rate, post.rate + params[:rating].to_i)
+      #post.rate.increment
+      #post.save
+   # end
+  #end
 
   private
     # Use callbacks to share common setup or constraints between actions.

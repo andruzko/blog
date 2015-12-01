@@ -9,7 +9,7 @@ var Post = {
       $.ajax({
         url: "post/rates",
         method: 'POST', 
-        data: {id: tthis.parents('tr').attr('post_id'), value: 1},
+        data: {id: tthis.parents('h4').attr('post_id'), value: 1},
       }).done(function(result) {
         tthis.next().html(result.data);
       });
@@ -22,7 +22,7 @@ var Post = {
       $.ajax({
         url: "post/rates",
         method: 'POST', 
-        data: {id: tthis.parents('tr').attr('post_id'), value: -1},
+        data: {id: tthis.parents('h4').attr('post_id'), value: -1},
       }).done(function(result) {
         tthis.prev().html(result.data);
       });
