@@ -37,7 +37,7 @@ class PostsController < ApplicationController
   end
 
   def favorites
-    @favorite = Favorite.find_by_user_id(current_user.id)
+    @favorite = Favorite.where(user: current_user)
     @favorite_posts = []
     Post.all.each do |post|
       @favorite.all.each do |favorite|
