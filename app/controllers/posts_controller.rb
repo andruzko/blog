@@ -36,6 +36,30 @@ class PostsController < ApplicationController
     @posts = Post.order(:updated_at).last(3).reverse
   end
 
+  def favorites
+    @favorite = Favorite.find_by_user_id(current_user.id)
+    @favorite_posts = []
+    Post.all.each do |post|
+      @favorite.all.each do |favorite|
+        if favorite.post == post
+          @favorite_posts.push post
+        end
+      end
+    end
+  end
+
+  def add_to_favorite
+    @post = Post.find(params[:post_id])
+    Favorite.create(post: @post, user: current_user)
+    redirect_to :back
+  end
+
+  def remove_from_favorite
+    @post = Post.find(params[:post_id])
+    Favorite.where(post: @post, user: current_user).first.destroy
+    redirect_to :back
+  end
+
   # GET /posts/new
   def new
     @post = Post.new
@@ -109,7 +133,6 @@ class PostsController < ApplicationController
   end
 
   def unlike
-    post = Post.find(params[:post_id])
     if current_user && (@post.user.id != current_user.id) && not(@post.rater.include?(current_user.id))
       @post.update_attribute(:rater, @post.rater.push(current_user.id))
       @post.update_attribute(:rate, @post.rate - 1)

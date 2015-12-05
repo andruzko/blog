@@ -2,7 +2,8 @@ class Post < ActiveRecord::Base
   acts_as_taggable
 
   belongs_to :user
-  has_many :comments
+  has_many :comments, dependent: :destroy
+  has_many :favorites
 
   validates :title, :body, presence: true
   validates :title, uniqueness: true
@@ -17,7 +18,4 @@ class Post < ActiveRecord::Base
    where("title like ? or body like ?", "%#{query}%", "%#{query}%")
   end
 
-  def rate_in
-    self.increment
-  end
 end

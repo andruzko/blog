@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   resources :posts do
+    member do
+      post 'like'
+      post 'unlike'
+    end
     resources :comments
   end
   get 'sessions/login'
@@ -13,19 +17,25 @@ Rails.application.routes.draw do
 
   post 'sessions' => 'sessions#create'
 
+  get 'favorites' => 'posts#favorites', as: 'favorites'
+  post 'posts/add_to_favorites' => 'posts#add_to_favorite'
+  post 'posts/remove_from_favorites' => 'posts#remove_from_favorite'
+
   get 'registration' => 'users#new', as: 'registration'
+
+  get 'users' => 'users#index'
+ # get 'user' => 'users#show'
   post 'users' => 'users#create'
   #post 'post/rates' => 'posts#rates'
 
-  get 'like' => 'posts#like', as: :like
-  post 'unlike' => 'posts#unlike', as: :unlike
+  #get 'like' => 'posts#like', as: :like
+  #get 'unlike' => 'posts#unlike', as: :unlike
 
   get 'tags/:tag', to: 'posts#index', as: :tag
 
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
+  resources :posts, :users, :sessions
+ 
+  
    root 'posts#index'
 
   # Example of regular route:

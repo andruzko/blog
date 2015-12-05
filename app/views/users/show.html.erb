@@ -1,17 +1,11 @@
-<h1>Profile</h1>
-<div class="left-wrap">
-  <p><%= image_tag avatar_url(@user, 128), width: '128px' %></p>
-</div>
-<div class="right-wrap">
-  <p>Name: <%= @user.name %></p>
-  <p>Email: <%= @user.email %></p>
-  <p>Rating: <%= @user.rating %></p>
 
-  <% if current_user == @user %>
-    <p><%= link_to 'New Post', new_post_path, class: "new-post" %></p>
-  <% end %>
-
-  <div class="all-posts-left">
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h1>Profile</h1>
+    <p><%= image_tag(avatar_url(@user), width:48) %></p>
+    <p>Name: <%= @user.name %></p>
+    <p>Email: <%= @user.email %></p>
+    <p>Rating: <%= @user.rating %></p>
     <strong><p>All posts:</p></strong>
     <% unless @user_posts.present? %>
       <span>Posts not found</span>
@@ -19,7 +13,18 @@
       <% @user_posts.each do |post| %>
         <p>
           <%= link_to post.title, post_path(post) %>
-          <span><%= post.score %></span>
+          <span><%= post.rate %></span>
+        </p>
+      <% end %>
+    <% end %>
+    <strong><p>All favorite posts:</p></strong>
+    <% unless @favorite_posts.present? %>
+      <span>Favorite posts not found</span>
+    <% else %>
+      <% @favorite_posts.each do |post| %>
+        <p>
+          <%= link_to post.title, post_path(post) %>
+          <span><%= post.rate %></span>
         </p>
       <% end %>
     <% end %>

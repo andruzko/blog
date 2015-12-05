@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show]
 
   def index
-    @users = User.all.sort_by(&:rate).reverse
+    @users = User.all.sort_by(&:rating).reverse
   end
 
   def show
