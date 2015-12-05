@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :like, :unlike]
 
   # GET /posts
   # GET /posts.json
@@ -123,7 +123,7 @@ class PostsController < ApplicationController
   end
 
   def like
-    if current_user && (@post.user.id != current_user.id) && not(@post.rater.include?(current_user.id))
+    if current_user && (@post.user_id != current_user.id) && not(@post.rater.include?(current_user.id))
       @post.update_attribute(:rater, @post.rater.push(current_user.id))
       @post.update_attribute(:rate, @post.rate + 1)
     else

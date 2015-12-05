@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   resources :posts do
     member do
-      post 'like'
-      post 'unlike'
+      get 'like'
+      get 'unlike'
     end
     resources :comments
   end

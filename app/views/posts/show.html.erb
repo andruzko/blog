@@ -15,30 +15,30 @@
     <tr>
       <td>
         <div class="row">
-          <div class="col-md-4">
-            <span>tags: <%= raw @post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')%></span>  
-            <h4>
-              <div>
-                <% if current_user %>
-                  <% unless favorited?(@post) %>
-                    <%= button_to action: 'add_to_favorite', post_id: @post.id do %>
-                      <span class="glyphicon glyphicon-star-empty favorite"></span>
-                    <% end %>
-                  <% else %>
-                    <%= button_to action: 'remove_from_favorite', post_id: @post.id do %>
-                      <span class="glyphicon glyphicon-star favorite"></span>
-                    <% end %>
+          <div class="col-xs-6 col-sm-3">
+            <span>tags: <%= raw @post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')%></span> 
+          </div> 
+            <div class="col-xs-6 col-sm-3">
+              <% if current_user %>
+                <% unless favorited?(@post) %>
+                  <%= button_to action: 'add_to_favorite', post_id: @post.id do %>
+                    <span class="glyphicon glyphicon-star-empty favorite"></span>
+                  <% end %>
+                <% else %>
+                  <%= button_to action: 'remove_from_favorite', post_id: @post.id do %>
+                    <span class="glyphicon glyphicon-star favorite"></span>
                   <% end %>
                 <% end %>
-              </div>
+              <% end %>
+            <div class="col-xs-6 col-sm-3">
               <%= link_to image_tag('like.png', width:25), like_post_path(@post)%>
               <span class='rate'><%= @post.rate %></span>
               <%= link_to image_tag('unlike.png', width:25), unlike_post_path(@post)%>
-            </h4>
-            <div class="col-md-4 col-md-offset-4">
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-3">
               <%= link_to 'Back', posts_path, class: "btn btn-info" %>
               <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-info" %>
-            </div>
           </div>
         </div>
       </td>

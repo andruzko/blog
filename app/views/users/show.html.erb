@@ -31,5 +31,16 @@
         <% end %>
       <% end %>
     <% end %>
+    <% count = 0 %>
+    <% Post.all.each do |post| %>
+      <% if post.rater.include?(@user.id) %>
+        <% count +=1 %>
+      <% end %>
+    <% end %>
+    <p>
+      <strong>likes or dislike </strong><%= count %>
+    </p>
   </div>
 </div>
+
+
